@@ -21,6 +21,8 @@ jobs:
         uses: skitionek/notify-microsoft-teams@master
         if: always()
         with:
-          github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          needs: ${{ toJson(needs) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
           overwrite: '{potentialAction: [{"@type": "OpenUri", name: "Repository", targets: [ { os: "default", uri: `${workflow_link}` } ] } ]}'
