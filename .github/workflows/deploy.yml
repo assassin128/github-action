@@ -23,3 +23,4 @@ jobs:
         with:
           github-token: ${{ github.token }}
           webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          overwrite: '{potentialAction: [{"@type": "OpenUri", name: "Repository", targets: [ { os: "default", uri: `${workflow_link}` } ] } ]}'
