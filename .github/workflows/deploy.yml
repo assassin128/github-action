@@ -4,7 +4,7 @@ env:
   AWS_DEFAULT_REGION: 'ap-southeast-1'
   AWS_CLOUDFRONT_DISTRIBUTION_ID: 'E4LCXFLZPV915'
   staging: 'stag-master.gtemas.com'
-  production: 'master.gtemas.com'
+  main: 'master.gtemas.com'
 on:
   push:
     branches: ['main']
@@ -16,7 +16,7 @@ jobs:
       - name: Detect branch
         id: detect-branch
         run: |
-          echo "::set-output name=branch::${{ github.ref }}"
+          echo "::set-output name=branch::${{ GITHUB_REF }}"
       - name: Detect destination
         id: detect-destination
         run: |
