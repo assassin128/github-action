@@ -19,10 +19,8 @@ jobs:
           cp .env.local .env
           echo ${{ env[github.ref_name] }}
       - name: MS Team notification
-        uses: skitionek/notify-microsoft-teams@master
+        uses: reediculous456/ms-teams-deploy-card@v1
         if: always()
         with:
-          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          needs: ${{ toJson(needs) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
+          github-token: ${{ github.token }}
+          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
