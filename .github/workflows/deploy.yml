@@ -18,7 +18,7 @@ jobs:
           echo "=================================="
           echo ${{ env[github.ref_name] }}
       - name: MS Team notification
-        uses: reediculous456/ms-teams-deploy-card@v1
+        uses: skitionek/notify-microsoft-teams@master
         if: always()
         with:
           github-token: ${{ github.token }}
