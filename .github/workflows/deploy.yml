@@ -18,9 +18,10 @@ jobs:
           echo "=================================="
           echo ${{ env[github.ref_name] }}
       - name: MS Team notification
-        uses: toko-bifrost/ms-teams-deploy-card@master
+        uses: skitionek/notify-microsoft-teams@master
         if: always()
         with:
-          github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          show-on-failure: true
+          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          needs: ${{ toJson(needs) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
