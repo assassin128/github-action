@@ -17,9 +17,10 @@ jobs:
         run: |
           echo "=================================="
           echo ${{ env[github.ref_name] }}
-      - name: MS Team Notification
+      - name: MS Team notification
         uses: toko-bifrost/ms-teams-deploy-card@master
         if: always()
         with:
           github-token: ${{ github.token }}
-          webhook-uri: https://gtemas.webhook.office.com/webhookb2/841c8a96-9d7c-4b46-a5f0-6f9ae8a3322a@20556786-c5fc-48c7-983b-1cdef4311933/IncomingWebhook/56571d0154cf4d97a282e1b23fb0906e/6dbf79a1-9675-4ffb-9aa9-366777e28b3e
+          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          show-on-failure: true
