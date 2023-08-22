@@ -13,17 +13,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Detect branch
-        id: detect-branch
-        run: |
-          echo "::set-output name=branch::${{ github.ref##*/ }}"
-      - name: Detect destination
-        id: detect-destination
-        run: |
-          echo "destination=${{ env[steps.detect-branch.outputs.branch] }}" >> $GITHUB_OUTPUT
+      # - name: Detect branch
+      #   id: detect-branch
+      #   run: |
+      #     echo "::set-output name=branch::${{ github.ref##*/ }}"
+      # - name: Detect destination
+      #   id: detect-destination
+      #   run: |
+      #     echo "destination=${{ env[steps.detect-branch.outputs.branch] }}" >> $GITHUB_OUTPUT
       - name: Show
         run: |
           echo "=================================="
-          echo ${{ steps.detect-branch.outputs.branch }}
+          echo ${{ GITHUB_REF_NAME }}
           echo "=================================="
-          echo ${{ steps.detect-destination.outputs.destination }}
+          echo ${{ github.ref }}
