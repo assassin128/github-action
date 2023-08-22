@@ -1,0 +1,29 @@
+name: Deploy static website
+
+env:
+  AWS_DEFAULT_REGION: 'ap-southeast-1'
+  AWS_CLOUDFRONT_DISTRIBUTION_ID: 'E4LCXFLZPV915'
+  staging: 'stag-master.gtemas.com'
+  production: 'master.gtemas.com'
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detect branch
+        id: detect-branch
+        run: |
+          echo "::set-output name=branch::${{ env.GITHUB_REF/refs\/heads\// }}"
+      - name: Detect destination
+        id: detect-destination
+        run: |
+          echo "destination=${{ env[steps.detect-branch.outputs.branch] }}" >> $GITHUB_OUTPUT
+      - name: Show
+        run: |
+          echo "=================================="
+          echo ${{ steps.detect-branch.outputs.branch }}
+          echo "=================================="
+          echo ${{ steps.detect-destination.outputs.destination }}
