@@ -25,4 +25,4 @@ jobs:
           needs: ${{ toJson(needs) }}
           job: ${{ toJson(job) }}
           steps: ${{ toJson(steps) }}
-          overwrite: '{potentialAction: [{"@type": "OpenUri", name: "Repository", targets: [ { os: "default", uri: `${workflow_link}` } ] } ]}'
+          overwrite: "{ title: `${workflow}`, potentialAction: [{ '@type': 'OpenUri', name: 'Repository', targets: [{ os: 'default', uri: `${workflow_link}` }] }, { '@type': 'OpenUri', name: 'Compare', targets: [ { os: 'default', uri: compare } ] }] }"
