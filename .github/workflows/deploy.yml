@@ -16,7 +16,7 @@ jobs:
       - name: Show
         run: |
           echo "=================================="
-          echo ${{ vari.test }}
+          cp .env.local .env
           echo ${{ env[github.ref_name] }}
       - name: MS Team notification
         uses: skitionek/notify-microsoft-teams@master
