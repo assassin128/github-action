@@ -24,6 +24,6 @@ jobs:
       - name: Show
         run: |
           echo "=================================="
-          echo ${{ GITHUB_REF_NAME }}
+          echo ${{ github.ref_name }}
           echo "=================================="
           echo ${{ github.ref }}
